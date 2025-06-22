@@ -1,0 +1,55 @@
+.tetris-game-container {
+  background-size: 400% 400%;
+  min-height: 100vh;
+  padding: 20px 20px;
+  background: linear-gradient(-45deg, #FF6B6B, #4ECDC4, #45B7D1, #96C93D);
+  animation: dashboardGradientBG 15s ease infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes dashboardGradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.tetris-board {
+  display: flex;
+  background-color: rgba(31, 8, 8, 0.384);
+  flex-direction: column;
+  border: 2px solid white;
+}
+
+.board-row {
+  display: flex;
+}
+
+.board-cell {
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.game-info {
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.game-over {
+  color: white;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.game-over button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
