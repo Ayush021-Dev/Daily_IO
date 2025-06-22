@@ -4,7 +4,7 @@ import "./todo.css";
 const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 const API_URL = isDevelopment 
   ? 'http://localhost:5000/api' 
-  : 'https://daily-io-backend.vercel.app/api';
+  : 'https://daily-io-hgba.vercel.app/api';
 
 const getToken = () => localStorage.getItem('token') || sessionStorage.getItem('token');
 

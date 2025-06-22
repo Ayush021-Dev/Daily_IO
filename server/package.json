@@ -1,5 +1,5 @@
 {
-    "name": "daily-io-backend",
+    "name": "daily-io-hgba",
     "version": "1.0.0",
     "description": "Backend for Daily IO app",
     "main": "server.js",

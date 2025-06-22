@@ -9,7 +9,7 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:3000',
   'https://daily-io.vercel.app',
-  'https://daily-io-backend.vercel.app'
+  'https://daily-io-hgba.vercel.app'
 ];
 
 // Configure CORS
