@@ -69,10 +69,10 @@ const AboutUs = () => {
           <div className="aboutus-divider"></div>
           <div className="aboutus-contributors-container">
             <div className="aboutus-contributor-card">
-              <h4 className="aboutus-contributor-name">Punya K Sirohi</h4>
+              <h4 className="aboutus-contributor-name">Ayush Shrivastava</h4>
             </div>
             <div className="aboutus-contributor-card">
-              <h4 className="aboutus-contributor-name">Ayush Shrivastava</h4>
+              <h4 className="aboutus-contributor-name">Punya K Sirohi</h4>
             </div>
             <div className="aboutus-contributor-card">
               <h4 className="aboutus-contributor-name">Diya Kurian</h4>

@@ -9,14 +9,6 @@ import AboutUs from "./aboutus";
 import Todo from "./todo";
 import Games from "./games";
 import Weather from "./weather";
-import BrickBreaker from "./games/brick";
-import WhackAMole from "./games/whack";
-import Snake from "./games/snake";
-import Game2048 from "./games/2048";
-import MemoryMatch from "./games/memory";
-import SlidingPuzzle from "./games/puzzle";
-import PingPong from "./games/pingpong";
-import Tetris from "./games/tetris";
 import Stock from "./stock";
 import News from "./news";
 import CurrencyConverter from "./currencyconverter";
@@ -48,16 +40,8 @@ function App() {
         <Route path="/dashboard" element={<NavbarWrapper><Dashboard /></NavbarWrapper>} />
         <Route path="/todo" element={<NavbarWrapper><Todo /></NavbarWrapper>} />
         <Route path="/aboutus" element={<NavbarWrapper><AboutUs /></NavbarWrapper>} />
-        <Route path="/Games" element={<NavbarWrapper><Games /></NavbarWrapper>} />
+        <Route path="/games/*" element={<NavbarWrapper><Games /></NavbarWrapper>} />
         <Route path="/weather" element={<NavbarWrapper><Weather /></NavbarWrapper>} /> 
-        <Route path="/games/brick" element={<NavbarWrapper><BrickBreaker /></NavbarWrapper>} />
-        <Route path="/games/whack" element={<NavbarWrapper><WhackAMole /></NavbarWrapper>} />
-        <Route path="/games/snake" element={<NavbarWrapper><Snake /></NavbarWrapper>} />
-        <Route path="/games/2048" element={<NavbarWrapper><Game2048 /></NavbarWrapper>} />
-        <Route path="/games/tetris" element={<NavbarWrapper><Tetris /></NavbarWrapper>} />
-        <Route path="/games/memory" element={<NavbarWrapper><MemoryMatch /></NavbarWrapper>} />
-        <Route path="/games/puzzle" element={<NavbarWrapper><SlidingPuzzle /></NavbarWrapper>} />
-        <Route path="/games/pingpong" element={<NavbarWrapper><PingPong /></NavbarWrapper>} />
         <Route path="/stock" element={<NavbarWrapper><Stock /></NavbarWrapper>} />
         <Route path="/news" element={<NavbarWrapper><News /></NavbarWrapper>} />
         <Route path="/currencyconverter" element={<NavbarWrapper><CurrencyConverter /></NavbarWrapper>} />

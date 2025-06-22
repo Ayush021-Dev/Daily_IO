@@ -57,11 +57,35 @@
   }
 
   .login-card {
-    background: white;
-    border-radius: 10px;
-    padding: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     width: 100%;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    max-width: 450px;
+  }
+
+  .login-notification {
+    background-color: rgba(22, 160, 133, 0.1);
+    color: #16a085;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+    border: 1px solid rgba(22, 160, 133, 0.2);
+  }
+
+  .login-error {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #c0392b;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    text-align: center;
+    font-size: 0.9rem;
+    width: 100%;
+    display: block;
   }
 
   .login-form {
@@ -80,17 +104,6 @@
     font-weight: 500;
     color: #333;
     font-size: 14px;
-  }
-  .login-error {
-    background-color: #ffebee;
-    color: #d32f2f;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 0.9rem;
-    width: 100%;
-    display: block;
   }
 
   .login-input {
@@ -199,9 +212,4 @@
     color: #45B7D1;
     font-weight: 600;
     text-decoration: none;
-  }
-
-  /* Remove error validation to save space */
-  .login-error {
-    display: none;
   }

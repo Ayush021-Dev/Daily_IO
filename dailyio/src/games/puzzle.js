@@ -197,10 +197,15 @@ const SlidingPuzzle = () => {
       
       <style jsx>{`
         .puzzle-container {
-        padding-top: 100px;
-          max-width: 800px;
-          margin: 0 auto;
-          font-family: sans-serif;
+          padding-top: 24px;
+          max-width: 420px;
+          margin: 90px auto 0 auto;
+          font-family: 'Poppins', 'Inter', Arial, sans-serif;
+          background: rgba(30, 36, 50, 0.92);
+          border-radius: 18px;
+          box-shadow: 0 8px 32px rgba(31, 38, 135, 0.18);
+          padding-bottom: 32px;
+          position: relative;
         }
         
         .puzzle-header {
@@ -241,65 +246,88 @@ const SlidingPuzzle = () => {
         }
         
         .puzzle-restart-btn {
-          background-color:rgb(25, 77, 70);
-          color: white;
+          background: linear-gradient(135deg, #6CD0FF 0%, #1A91DA 100%);
+          color: #fff;
           border: none;
-          padding: 8px 16px;
-          border-radius: 4px;
+          padding: 10px 22px;
+          border-radius: 22px;
           cursor: pointer;
-          font-size: 16px;
-          transition: background-color 0.3s;
+          font-size: 1em;
+          font-weight: 600;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+          transition: background 0.2s, color 0.2s, transform 0.15s;
         }
         
         .puzzle-restart-btn:hover {
-          background-color: #00a892;
+          background: linear-gradient(135deg, #1A91DA 0%, #6CD0FF 100%);
+          color: #fff;
+          transform: scale(1.07);
         }
         
         .puzzle-size-btn {
-          background-color: rgba(255,255,255,0.2);
-          color: white;
+          background: rgba(255,255,255,0.18);
+          color: #fff;
           border: none;
-          padding: 6px 12px;
-          border-radius: 4px;
+          padding: 7px 16px;
+          border-radius: 16px;
           cursor: pointer;
-          font-size: 14px;
-          transition: all 0.3s;
+          font-size: 0.98em;
+          font-weight: 500;
+          margin: 0 2px;
+          box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+          transition: background 0.2s, color 0.2s, transform 0.15s;
         }
         
         .puzzle-size-btn:hover {
-          background-color: rgba(255, 255, 255, 0.07);
+          background: rgba(255,255,255,0.32);
+          color: #ffe066;
+          transform: scale(1.08);
         }
         
         .puzzle-size-btn.active {
-          background-color:rgb(36, 134, 124);
-          color: white;
+          background: linear-gradient(135deg, #6CD0FF 0%, #1A91DA 100%);
+          color: #fff;
         }
         
         .puzzle-grid {
           display: grid;
-          gap: 6px;
+          gap: 8px;
           width: 100%;
-          max-width: 400px;
+          max-width: 340px;
+          min-width: 180px;
           margin: 0 auto;
           aspect-ratio: 1/1;
+          background: rgba(255,255,255,0.10);
+          border-radius: 14px;
+          box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+          position: relative;
         }
         
         .puzzle-tile {
-          background: linear-gradient(135deg, rgb(40, 82, 112), rgb(100, 113, 117));
-          border-radius: 8px;
+          background: linear-gradient(135deg, #2e466e 60%, #6c7175 100%);
+          border-radius: 10px;
           display: flex;
           justify-content: center;
           align-items: center;
           font-size: 24px;
           font-weight: bold;
-          color: white;
+          color: #fff;
           cursor: pointer;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-          transition: transform 0.2s;
+          box-shadow: 0 4px 16px rgba(0,0,0,0.18), 0 1.5px 0 #fff2 inset;
+          border: 2.5px solid rgba(255,255,255,0.13);
+          transition: transform 0.18s, box-shadow 0.18s;
+          animation: tilePop 0.18s;
+        }
+        
+        @keyframes tilePop {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.10); }
+          100% { transform: scale(1); }
         }
         
         .puzzle-tile:hover:not(.empty) {
-          transform: scale(0.95);
+          transform: scale(0.93);
+          box-shadow: 0 6px 24px rgba(0,0,0,0.22);
         }
         
         .puzzle-tile.empty {
@@ -309,40 +337,54 @@ const SlidingPuzzle = () => {
         }
         
         .puzzle-victory {
-          background-color: rgba(255,255,255,0.2);
-          border: 2px solid white;
-          border-radius: 8px;
-          padding: 15px;
-          margin-bottom: 20px;
+          position: absolute;
+          top: 0; left: 0; right: 0; bottom: 0;
+          background: rgba(0,0,0,0.72);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 10;
+          border-radius: 18px;
+          color: #fff;
           text-align: center;
-          color: white;
         }
         
         .puzzle-victory h3 {
-          color: white;
+          color: #ffe066;
           margin-top: 0;
-          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+          font-size: 2.1em;
+          text-shadow: 0 2px 8px #000;
         }
         
         /* Responsive design */
         @media (max-width: 600px) {
           .puzzle-tile {
-            font-size: 18px;
+            font-size: 16px;
+          }
+          .puzzle-container {
+            padding-top: 16px;
+            margin-top: 40px;
+            max-width: 98vw;
+            border-radius: 10px;
+          }
+          .puzzle-grid {
+            max-width: 98vw;
+            min-width: 120px;
+            gap: 4px;
           }
         }
         
         @media (max-width: 400px) {
           .puzzle-tile {
-            font-size: 16px;
+            font-size: 12px;
           }
-          
           .puzzle-controls {
             flex-direction: column;
-            gap: 10px;
+            gap: 8px;
           }
-          
           .puzzle-difficulty {
-            margin-top: 10px;
+            margin-top: 8px;
           }
         }
       `}</style>

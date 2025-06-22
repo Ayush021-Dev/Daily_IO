@@ -70,7 +70,10 @@ const Stock = () => {
   return (
     <div className="stock-page">
       <div className="stock-dashboard">
-        <h1 align="center"  >Stock Market Tracker</h1>
+        <div className="stock-header">
+          <h1>Stock Market Tracker</h1>
+          <p>Live prices from global markets</p>
+        </div>
         {isLoading ? (
           <div className="loading">Loading stock data...</div>
         ) : (

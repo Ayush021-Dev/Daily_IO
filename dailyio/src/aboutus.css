@@ -1,15 +1,15 @@
-/* AboutUs.css */
+/* AboutUs.css - Aligned with Dashboard Theme */
 .aboutus-container {
   background: linear-gradient(-45deg, #FF6B6B, #4ECDC4, #45B7D1, #96C93D);
   background-size: 400% 400%;
-  min-height: 100vh;
-  padding: 40px 20px;
-  font-family: 'Arial', sans-serif;
-  color: #ffffff;
   animation: aboutusGradientBG 15s ease infinite;
+  min-height: 100vh;
+  padding: 80px 20px 40px 20px;
+  font-family: 'Poppins', 'Inter', sans-serif;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
 }
 
 @keyframes aboutusGradientBG {
@@ -20,142 +20,122 @@
 
 .aboutus-content {
   width: 100%;
-  max-width: 1000px;
+  max-width: 900px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 2rem;
 }
 
 .aboutus-header {
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-top: 20px;
+  margin-bottom: 1rem;
 }
 
 .aboutus-header h1 {
-  color: white;
-  font-size: 48px;
+  font-size: 3em;
   font-weight: 700;
-  margin: 0 0 10px 0;
-  padding: 0;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .aboutus-header h1 span {
-  color: #FFD93D;
+  color: #FFD93D; /* Yellow from dashboard */
 }
 
 .aboutus-subtitle {
-  color: white;
-  font-size: 24px;
-  margin: 5px 0 0 0;
+  font-size: 1.3em;
+  color: #fff;
   font-weight: 400;
   opacity: 0.9;
 }
 
 .aboutus-card {
-  background-color: rgba(69, 85, 149, 0.216);
-  border-radius: 10px;
-  padding: 25px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.aboutus-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(15px);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.1);
+  color: #333; /* Dark text for readability */
 }
 
 .aboutus-section-title {
-  font-size: 28px;
-  margin-top: 0;
-  margin-bottom: 15px;
-  color: #ffffff;
+  font-size: 1.8em;
+  margin-bottom: 0.75rem;
+  color: #feffab; /* Blue from dashboard */
+  font-weight: 600;
 }
 
 .aboutus-divider {
   height: 3px;
-  width: 60px;
-  background-color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 20px;
+  width: 50px;
+  background: #1A91DA;
+  border-radius: 2px;
+  margin-bottom: 1.5rem;
 }
 
 .aboutus-text {
-  font-size: 16px;
-  line-height: 1.6;
-  margin-bottom: 0;
+  font-size: 1.05em;
+  line-height: 1.7;
+  color: #454545;
 }
 
 .aboutus-feature-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
+  list-style: none;
+  padding-left: 0;
 }
 
 .aboutus-feature-item {
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 0 12px 30px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
-  padding-left: 20px;
+  font-size: 1.05em;
 }
 
 .aboutus-feature-item:before {
-  content: "•";
+  content: "✓";
   position: absolute;
   left: 0;
-  color: #FFD700;
+  color: #1A91DA;
+  font-weight: 700;
 }
-
 .aboutus-feature-item:last-child {
   border-bottom: none;
 }
 
 .aboutus-contributors-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
 }
 
 .aboutus-contributor-card {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  padding: 15px 25px;
+  background: linear-gradient(135deg, #6CD0FF 0%, #1A91DA 100%);
+  border-radius: 12px;
+  padding: 1.5rem;
   text-align: center;
-  flex: 1;
-  min-width: 200px;
-  max-width: 250px;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .aboutus-contributor-card:hover {
-  transform: scale(1.05);
-  background-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(26, 145, 218, 0.4);
 }
 
 .aboutus-contributor-name {
-  font-size: 18px;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #fff;
   margin: 0;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
   .aboutus-header h1 {
-    font-size: 36px;
+    font-size: 2.5em;
   }
-  
-  .aboutus-subtitle {
-    font-size: 20px;
-  }
-  
-  .aboutus-section-title {
-    font-size: 24px;
-  }
-  
-  .aboutus-contributor-card {
-    min-width: 150px;
+  .aboutus-card {
+    padding: 1.5rem;
   }
 }

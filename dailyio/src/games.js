@@ -14,14 +14,14 @@ const GamesHome = () => {
   const [hovered, setHovered] = useState(null);
 
   const games = [
-    { id: 1, name: "Brick Breaker", description: "Break all the bricks!", path: "/games/brick", video: "/videos/brick.mp4" },
-    { id: 2, name: "Memory Match", description: "Test your memory skills", path: "/games/memory", video: "/videos/memory.mp4" },
-    { id: 3, name: "Snake Game", description: "Classic snake challenge", path: "/games/snake", video: "/videos/snake.mp4" },
-    { id: 4, name: "Whack-A-Mole", description: "Whack moles as fast as you can", path: "/games/whack", video: "/videos/whack.mp4" },
-    { id: 5, name: "Tetris", description: "The classic game of Tetris", path: "/games/tetris", video: "/videos/tetris.mp4" },
-    { id: 6, name: "2048", description: "Combine tiles to reach 2048", path: "/games/2048", video: "/videos/2048.mp4" },
-    { id: 7, name: "Puzzle", description: "Slide the blocks in minimum moves", path: "/games/puzzle", video: "/videos/puzzle.mp4" },
-    { id: 8, name: "Ping Pong", description: "2D Table tennis", path: "/games/pingpong", video: "/videos/pingpong.mp4" },
+    { id: 1, name: "Brick Breaker", description: "Break all the bricks!", path: "brick", video: "/videos/brick.mp4" },
+    { id: 2, name: "Memory Match", description: "Test your memory skills", path: "memory", video: "/videos/memory.mp4" },
+    { id: 3, name: "Snake Game", description: "Classic snake challenge", path: "snake", video: "/videos/snake.mp4" },
+    { id: 4, name: "Whack-A-Mole", description: "Whack moles as fast as you can", path: "whack", video: "/videos/whack.mp4" },
+    { id: 5, name: "Tetris", description: "The classic game of Tetris", path: "tetris", video: "/videos/tetris.mp4" },
+    { id: 6, name: "2048", description: "Combine tiles to reach 2048", path: "2048", video: "/videos/2048.mp4" },
+    { id: 7, name: "Puzzle", description: "Slide the tiles to solve the puzzle", path: "puzzle", video: "/videos/puzzle.mp4" },
+    { id: 8, name: "Ping Pong", description: "2D Table tennis", path: "pingpong", video: "/videos/pingpong.mp4" },
   ];
 
   return (
@@ -39,7 +39,7 @@ const GamesHome = () => {
                 onMouseLeave={() => setHovered(null)}
                 style={{ position: "relative" }}
               >
-                <Link to={game.path || `/games/${game.id}`}>
+                <Link to={game.path}>
                   <h3>{game.name}</h3>
                   <p>{game.description}</p>
                 </Link>
@@ -67,14 +67,14 @@ const Games = () => {
   return (
     <Routes>
       <Route path="/" element={<GamesHome />} />
-      <Route path="/games/brick" element={<BrickBreaker />} />
-      <Route path="/games/whack" element={<WhackAMole />} />
-      <Route path="/games/snake" element={<Snake />} />
-      <Route path="/games/2048" element={<Game2048 />} />
-      <Route path="/games/tetris" element={<Tetris />} />
-      <Route path="/games/memory" element={<MemoryMatch />} />
-      <Route path="/games/puzzle" element={<SlidingPuzzle />} />
-      <Route path="/games/pingpong" element={<PingPong />} />
+      <Route path="/brick" element={<BrickBreaker />} />
+      <Route path="/whack" element={<WhackAMole />} />
+      <Route path="/snake" element={<Snake />} />
+      <Route path="/2048" element={<Game2048 />} />
+      <Route path="/tetris" element={<Tetris />} />
+      <Route path="/memory" element={<MemoryMatch />} />
+      <Route path="/puzzle" element={<SlidingPuzzle />} />
+      <Route path="/pingpong" element={<PingPong />} />
     </Routes>
   );
 };

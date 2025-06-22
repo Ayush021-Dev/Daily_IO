@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import './login.css';
 
 const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
@@ -9,13 +9,23 @@ const API_URL = isDevelopment
   
 const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
     rememberMe: false
   });
   const [error, setError] = useState('');
+  const [notification, setNotification] = useState('');
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (location.state?.message) {
+      setNotification(location.state.message);
+      // Optional: Clear the state so the message doesn't reappear on refresh
+      window.history.replaceState({}, document.title)
+    }
+  }, [location]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -81,6 +91,7 @@ const Login = () => {
         </div>
 
         <div className="login-card">
+          {notification && <div className="login-notification">{notification}</div>}
           {error && <div className="login-error">{error}</div>}
           <form className="login-form" onSubmit={handleSubmit}>
             <div className="login-form-group">

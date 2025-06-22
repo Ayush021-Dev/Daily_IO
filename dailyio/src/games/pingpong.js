@@ -6,6 +6,14 @@ const PingPong = () => {
   const [gameOver, setGameOver] = useState(false);
   const [winner, setWinner] = useState('');
   const canvasRef = useRef(null);
+  const scoreRef = useRef(score);
+  const gameOverRef = useRef(gameOver);
+  const winnerRef = useRef(winner);
+  
+  // Keep refs in sync
+  useEffect(() => { scoreRef.current = score; }, [score]);
+  useEffect(() => { gameOverRef.current = gameOver; }, [gameOver]);
+  useEffect(() => { winnerRef.current = winner; }, [winner]);
   
   const PADDLE_HEIGHT = 80;
   const PADDLE_WIDTH = 10;
@@ -42,6 +50,7 @@ const PingPong = () => {
     canvas.addEventListener('mousemove', handleMouseMove);
     
     const gameLoop = setInterval(() => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = 'rgba(73, 209, 190, 0.2)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       
@@ -98,7 +107,7 @@ const PingPong = () => {
       }
       
       if (ballX < 0) {
-        const newScore = { ...score, computer: score.computer + 1 };
+        const newScore = { ...scoreRef.current, computer: scoreRef.current.computer + 1 };
         setScore(newScore);
         
         if (newScore.computer >= WINNING_SCORE) {
@@ -111,7 +120,7 @@ const PingPong = () => {
       }
       
       if (ballX > canvas.width) {
-        const newScore = { ...score, player: score.player + 1 };
+        const newScore = { ...scoreRef.current, player: scoreRef.current.player + 1 };
         setScore(newScore);
         
         if (newScore.player >= WINNING_SCORE) {
@@ -123,11 +132,11 @@ const PingPong = () => {
         }
       }
       
-      ctx.font = '24px Arial';
-      ctx.fillStyle = 'white';
+      ctx.font = 'bold 32px Poppins, Inter, Arial, sans-serif';
+      ctx.fillStyle = '#ffe066';
       ctx.textAlign = 'center';
-      ctx.fillText(score.player.toString(), canvas.width / 4, 30);
-      ctx.fillText(score.computer.toString(), 3 * canvas.width / 4, 30);
+      ctx.fillText(scoreRef.current.player.toString(), canvas.width / 4, 40);
+      ctx.fillText(scoreRef.current.computer.toString(), 3 * canvas.width / 4, 40);
       
     }, 1000 / 60); 
     
@@ -142,7 +151,7 @@ const PingPong = () => {
       clearInterval(gameLoop);
       canvas.removeEventListener('mousemove', handleMouseMove);
     };
-  }, [gameStarted, score]);
+  }, [gameStarted]);
   
   const startGame = () => {
     setGameStarted(true);
@@ -204,20 +213,21 @@ const PingPong = () => {
       
       <canvas 
         ref={canvasRef} 
-        width={700} 
+        width={700}
         height={400}
         className={`pingpong-canvas ${gameStarted && !gameOver ? 'pingpong-active' : ''}`}
+        style={{ width: '98vw', maxWidth: 700, height: 'auto', aspectRatio: '7/4', borderRadius: 16, boxShadow: '0 8px 32px rgba(31,38,135,0.18)', border: '2.5px solid #ffe066' }}
       />
       
       <style jsx>{`
         .pingpong-container {
-        padding-top:100px;
+          padding-top: 99px;
           display: flex;
           flex-direction: column;
           align-items: center;
           max-width: 800px;
           margin: 0 auto;
-          font-family: Arial, sans-serif;
+          font-family: 'Poppins', 'Inter', Arial, sans-serif;
           color: white;
         }
         
@@ -227,20 +237,25 @@ const PingPong = () => {
         }
         
         .pingpong-header h2 {
-          font-size: 28px;
+          font-size: 2.1em;
           margin-bottom: 10px;
+          letter-spacing: 1px;
+          color: #ffe066;
+          text-shadow: 0 2px 8px #000;
         }
         
         .pingpong-header p {
-          font-size: 16px;
+          font-size: 1.1em;
           opacity: 0.8;
+          color: #fff;
         }
         
         .pingpong-canvas {
-          background: linear-gradient(to right, rgba(29, 77, 70, 0.23), rgba(59, 67, 97, 0.75));
-          border-radius: 10px;
+          background: linear-gradient(120deg, #1a91da 0%, #6cd0ff 100%);
+          border-radius: 16px;
           display: none;
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 8px 32px rgba(31,38,135,0.18);
+          border: 2.5px solid #ffe066;
         }
         
         .pingpong-active {
@@ -252,44 +267,71 @@ const PingPong = () => {
           flex-direction: column;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(to right, rgba(73, 209, 190, 0.8), rgba(93, 129, 255, 0.8));
-          width: 700px;
-          height: 400px;
-          border-radius: 10px;
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+          background: rgba(30,36,50,0.92);
+          width: 98vw;
+          max-width: 700px;
+          min-width: 220px;
+          height: auto;
+          aspect-ratio: 7/4;
+          border-radius: 18px;
+          box-shadow: 0 8px 32px rgba(31,38,135,0.18);
+          color: #ffe066;
+          font-family: 'Poppins', 'Inter', Arial, sans-serif;
         }
         
         .pingpong-game-over h3 {
-          font-size: 32px;
+          font-size: 2em;
           margin-bottom: 15px;
+          color: #ffe066;
+          text-shadow: 0 2px 8px #000;
         }
         
         .pingpong-game-over p {
-          font-size: 22px;
+          font-size: 1.2em;
           margin-bottom: 25px;
+          color: #fff;
         }
         
         .pingpong-button {
-          background-color: #FFD700;
-          color: #333;
+          background: linear-gradient(135deg, #6CD0FF 0%, #1A91DA 100%);
+          color: #fff;
           border: none;
-          padding: 12px 24px;
-          font-size: 16px;
-          font-weight: bold;
-          border-radius: 50px;
+          padding: 12px 32px;
+          font-size: 1.1em;
+          font-weight: 600;
+          border-radius: 32px;
           cursor: pointer;
-          transition: all 0.2s ease;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+          transition: background 0.2s, color 0.2s, transform 0.15s;
+          margin-top: 10px;
         }
         
         .pingpong-button:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+          background: linear-gradient(135deg, #1A91DA 0%, #6CD0FF 100%);
+          color: #ffe066;
+          transform: scale(1.07);
+          box-shadow: 0 6px 18px rgba(0,0,0,0.18);
         }
         
         .pingpong-button:active {
-          transform: translateY(1px);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          transform: scale(0.97);
+          box-shadow: 0 2px 4px rgba(0,0,0,0.10);
+        }
+        
+        @media (max-width: 800px) {
+          .pingpong-canvas, .pingpong-start-screen, .pingpong-game-over {
+            max-width: 98vw;
+            min-width: 180px;
+          }
+        }
+        @media (max-width: 500px) {
+          .pingpong-header h2 {
+            font-size: 1.2em;
+          }
+          .pingpong-canvas, .pingpong-start-screen, .pingpong-game-over {
+            min-width: 120px;
+            border-radius: 10px;
+          }
         }
       `}</style>
     </div>

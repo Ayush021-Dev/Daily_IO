@@ -257,6 +257,13 @@ const BrickBreaker = () => {
     bricksRef.current = initBricks(BRICK_COLUMN_COUNT, BRICK_ROW_COUNT);
     };
   
+  useEffect(() => {
+    document.body.classList.add('brick-breaker-active');
+    return () => {
+      document.body.classList.remove('brick-breaker-active');
+    };
+  }, []);
+
   return (
     <div className="brick-breaker-page"> 
       <div className="brick-breaker-container">

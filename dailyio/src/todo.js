@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import "./todo.css";
 
 const isDevelopment = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
@@ -13,7 +14,14 @@ const ToDo = () => {
   const [newTask, setNewTask] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
+  const handleAuthError = useCallback(() => {
+    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
+    navigate('/login', { state: { message: 'Your session has expired. Please log in again.' } });
+  }, [navigate]);
+  
   // Fetch todos on mount
   useEffect(() => {
     const fetchTodos = async () => {
@@ -21,10 +29,22 @@ const ToDo = () => {
       setError("");
       try {
         const token = getToken();
+        if (!token) {
+          handleAuthError();
+          return;
+        }
+        
         const res = await fetch(`${API_URL}/todos`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
+        
+        if (res.status === 401 || res.status === 403) {
+          handleAuthError();
+          return;
+        }
+        
         if (!res.ok) throw new Error('Failed to fetch todos');
+        
         const data = await res.json();
         setTasks(data.map(todo => ({ id: todo._id, text: todo.text, completed: todo.completed })));
       } catch (err) {
@@ -34,7 +54,7 @@ const ToDo = () => {
       }
     };
     fetchTodos();
-  }, []);
+  }, [handleAuthError]);
 
   // Add a new todo
   const addTask = async () => {
@@ -49,6 +69,7 @@ const ToDo = () => {
         },
         body: JSON.stringify({ text: newTask })
       });
+      if (res.status === 401 || res.status === 403) return handleAuthError();
       if (!res.ok) throw new Error('Failed to add todo');
       const todo = await res.json();
       setTasks([...tasks, { id: todo._id, text: todo.text, completed: todo.completed }]);
@@ -72,6 +93,7 @@ const ToDo = () => {
         },
         body: JSON.stringify({ completed: !task.completed })
       });
+      if (res.status === 401 || res.status === 403) return handleAuthError();
       if (!res.ok) throw new Error('Failed to update todo');
       const updated = await res.json();
       setTasks(tasks.map(t => t.id === id ? { ...t, completed: updated.completed } : t));
@@ -88,6 +110,7 @@ const ToDo = () => {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });
+      if (res.status === 401 || res.status === 403) return handleAuthError();
       if (!res.ok) throw new Error('Failed to delete todo');
       setTasks(tasks.filter((task) => task.id !== id));
     } catch (err) {

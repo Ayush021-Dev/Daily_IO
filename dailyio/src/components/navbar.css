@@ -8,6 +8,7 @@
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     z-index: 1000;
+    height: 70px; /* Standard height */
   }
   
   
@@ -74,35 +75,60 @@
   
   .navbar-auth {
     display: flex;
+    align-items: center;
     gap: 15px;
   }
   
-  .login-btn, .signup-btn {
-    padding: 8px 20px;
-    border-radius: 25px;
-    text-decoration: none;
+  .navbar-welcome-message {
+    color: #555;
     font-weight: 500;
+    font-size: 0.95em;
+    white-space: nowrap;
+  }
+  
+  .login-btn,
+  .signup-btn,
+  .logout-btn {
+    padding: 8px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 600;
     transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-size: 0.9em;
   }
   
   .login-btn {
-    color: white;
-    border: 2px solid white;
+    background-color: #eef5ff;
+    color: #1A91DA;
+    border-color: #1A91DA;
   }
   
   .login-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background-color: #1A91DA;
+    color: #fff;
   }
   
   .signup-btn {
-    background: linear-gradient(135deg, #6CD0FF 0%, #1A91DA 100%);
-    color: white;
-    border: none;
+    background-color: #1A91DA;
+    color: #fff;
   }
   
   .signup-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(26, 145, 218, 0.4);
+    background-color: #147ec1;
+    border-color: #147ec1;
+  }
+  
+  .logout-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border-color: #ff4d4d;
+  }
+  
+  .logout-btn:hover {
+    background-color: #cc0000;
+    border-color: #cc0000;
   }
   
   .navbar-menu-icon {
@@ -200,5 +226,16 @@
       height: auto;
       margin-top: 15px;
       margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .navbar-auth.active {
+      /* ... existing responsive styles ... */
+    }
+
+    .navbar-welcome-message {
+      margin-bottom: 15px;
+      font-size: 1.1em;
     }
   }
