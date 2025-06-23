@@ -74,6 +74,7 @@ const Signup = () => {
         </div>
 
         <div className="signup-card">
+          <Link to="/" className="back-home-btn">← Back to Home</Link>
           {error && <div className="signup-error">{error}</div>}
           <form className="signup-form" onSubmit={handleSubmit}>
             <div className="signup-form-group">

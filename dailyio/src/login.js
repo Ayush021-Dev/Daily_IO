@@ -91,6 +91,7 @@ const Login = () => {
         </div>
 
         <div className="login-card">
+          <Link to="/" className="back-home-btn">← Back to Home</Link>
           {notification && <div className="login-notification">{notification}</div>}
           {error && <div className="login-error">{error}</div>}
           <form className="login-form" onSubmit={handleSubmit}>

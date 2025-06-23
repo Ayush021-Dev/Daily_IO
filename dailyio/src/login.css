@@ -213,3 +213,21 @@
     font-weight: 600;
     text-decoration: none;
   }
+
+  .back-home-btn {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: #45B7D1;
+    background: none;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+
+  .back-home-btn:hover {
+    color: #2C3E50;
+    text-decoration: underline;
+  }
