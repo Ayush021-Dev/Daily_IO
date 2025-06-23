@@ -1,7 +1,57 @@
-import React from "react";
+import React, { useState, useRef } from "react";
+import ContributorModal from "./components/ContributorModal.js";
 import "./aboutus.css";
 
+const contributors = [
+  {
+    name: "Ayush Shrivastava",
+    img: "/pic/ayush.jpg",
+  },
+  {
+    name: "Punya K Sirohi",
+    img: "/pic/punya.jpg",
+  },
+  {
+    name: "Diya Kurian",
+    img: "/pic/diya.jpg",
+  },
+];
+
 const AboutUs = () => {
+  const [hoveredContributor, setHoveredContributor] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const hideTimer = useRef(null);
+
+  const handleCardEnter = (contributor) => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    setHoveredContributor(contributor);
+    setModalVisible(true);
+  };
+
+  const handleCardLeave = () => {
+    hideTimer.current = setTimeout(() => {
+      setModalVisible(false);
+      setHoveredContributor(null);
+    }, 100); // short delay to allow moving to modal
+  };
+
+  const handleModalEnter = () => {
+    if (hideTimer.current) clearTimeout(hideTimer.current);
+    setModalVisible(true);
+  };
+
+  const handleModalLeave = () => {
+    hideTimer.current = setTimeout(() => {
+      setModalVisible(false);
+      setHoveredContributor(null);
+    }, 100);
+  };
+
+  const handleModalClose = () => {
+    setModalVisible(false);
+    setHoveredContributor(null);
+  };
+
   return (
     <div className="aboutus-container">
       <div className="aboutus-content">
@@ -68,16 +118,23 @@ const AboutUs = () => {
           <h2 className="aboutus-section-title">Meet the Contributors</h2>
           <div className="aboutus-divider"></div>
           <div className="aboutus-contributors-container">
-            <div className="aboutus-contributor-card">
-              <h4 className="aboutus-contributor-name">Ayush Shrivastava</h4>
-            </div>
-            <div className="aboutus-contributor-card">
-              <h4 className="aboutus-contributor-name">Punya K Sirohi</h4>
-            </div>
-            <div className="aboutus-contributor-card">
-              <h4 className="aboutus-contributor-name">Diya Kurian</h4>
-            </div>
+            {contributors.map((contributor) => (
+              <div
+                className="aboutus-contributor-card"
+                key={contributor.name}
+                onMouseEnter={() => handleCardEnter(contributor)}
+                onMouseLeave={handleCardLeave}
+              >
+                <h4 className="aboutus-contributor-name">{contributor.name}</h4>
+              </div>
+            ))}
           </div>
+          <ContributorModal
+            contributor={hoveredContributor && modalVisible ? hoveredContributor : null}
+            onMouseEnter={handleModalEnter}
+            onMouseLeave={handleModalLeave}
+            onClose={handleModalClose}
+          />
         </section>
       </div>
     </div>

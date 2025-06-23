@@ -130,6 +130,24 @@
   margin: 0;
 }
 
+.aboutus-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #888;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s;
+}
+.aboutus-modal-close:hover {
+  color: #1A91DA;
+}
+.aboutus-modal {
+  position: relative; /* Add this if not present */
+}
 /* Responsive styles */
 @media (max-width: 768px) {
   .aboutus-header h1 {
@@ -138,4 +156,55 @@
   .aboutus-card {
     padding: 1.5rem;
   }
+}
+
+.aboutus-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.aboutus-modal {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.25);
+  padding: 32px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 90vw;
+  max-height: 80vh;
+  min-width: 260px;
+  min-height: 220px;
+  animation: fadeIn 0.2s;
+}
+
+.aboutus-modal-img {
+  width: 260px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 18px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+}
+
+.aboutus-modal-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #222;
+  margin-top: 4px;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
