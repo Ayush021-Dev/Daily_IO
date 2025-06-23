@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+# DailyIO - Your Daily Digital Companion 🚀
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DailyIO is an all-in-one web application that brings together essential daily tools and entertainment features in a seamless, user-friendly interface. From productivity tools to engaging mini-games, DailyIO serves as your digital sanctuary for daily activities.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+### 📊 Dashboard
+- Personalized dashboard with customizable widgets
+- Quick access to all features
+- Real-time updates and notifications
 
-### `npm start`
+### 🎮 Mini Games
+- **Memory Match**: Test your memory with a fun card-matching game
+- **Snake Game**: Classic snake game with modern graphics
+- **Tetris**: The timeless puzzle game
+- **2048**: Strategic number sliding puzzle
+- **Whack-a-Mole**: Quick reflexes game
+- **Brick Breaker**: Classic arcade action
+- **Ping Pong**: Two-player table tennis
+- **Puzzle**: Sliding tile puzzle game
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 📱 Utility Tools
+- **Weather Forecast**: Real-time weather updates for your location
+- **To-Do List**: Task management with priority settings
+- **Unit Converter**: Convert between different units of measurement
+- **Currency Converter**: Real-time currency exchange rates
+- **Stock Tracker**: Live stock market updates
+- **News Feed**: Latest news from various sources
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 🛠️ Technical Stack
 
-### `npm test`
+### Frontend
+- React.js
+- CSS3 with Flexbox/Grid
+- JavaScript ES6+
+- HTML5 Canvas (for games)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- JWT Authentication
 
-### `npm run build`
+## 🚀 Getting Started
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/DailyIO.git
+   ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Install dependencies**
+   ```bash
+   # Install frontend dependencies
+   cd dailyio
+   npm install
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   # Install backend dependencies
+   cd ../server
+   npm install
+   ```
 
-### `npm run eject`
+3. **Set up environment variables**
+   ```bash
+   # Create .env file in server directory
+   touch .env
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+   # Add required environment variables
+   JWT_SECRET=your_jwt_secret
+   MONGODB_URI=your_mongodb_uri
+   ```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4. **Run the application**
+   ```bash
+   # Start backend server
+   cd server
+   npm start
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+   # Start frontend in new terminal
+   cd dailyio
+   npm start
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 🎮 Game Features
 
-## Learn More
+### Memory Match
+- Dynamic card matching gameplay
+- Score tracking based on moves and time
+- Personal best and all-time high scores
+- Animated card flips and matches
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Snake Game
+- Classic snake gameplay with modern graphics
+- Score tracking
+- Increasing difficulty
+- Collision detection
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### More games coming soon!
 
-### Code Splitting
+## 👥 Contributors
+- Ayush Shrivastava
+- Punya K Sirohi
+- Diya Kurian
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## 📱 Responsive Design
+- Mobile-first approach
+- Tablet and desktop optimized
+- Seamless experience across all devices
 
-### Analyzing the Bundle Size
+## 🔒 Security Features
+- JWT-based authentication
+- Secure password hashing
+- Protected API endpoints
+- HTTPS encryption
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## 🎯 Future Enhancements
+- [ ] More mini-games
+- [ ] Social features and multiplayer games
+- [ ] Dark/Light theme toggle
+- [ ] Push notifications
+- [ ] Profile customization
+- [ ] Achievement system
+- [ ] Game leaderboards
+- [ ] Social sharing
 
-### Making a Progressive Web App
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🤝 Contributing
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-### Advanced Configuration
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## 📞 Support
+For support, email [your-email@example.com](mailto:your-email@example.com) or open an issue in the repository.
 
-### Deployment
+---
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Made with ❤️ by Team DailyIO
